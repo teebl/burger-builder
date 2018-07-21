@@ -30,31 +30,6 @@ class Checkout extends Component {
 
 	checkoutContinuedHandler = () => {
 		this.props.history.replace("/checkout/contact-data");
-		this.setState({ loading: true });
-		console.log(this.state.loading);
-		const order = {
-			ingredients: this.state.ingredients,
-			//Price would be calculated SERVER SIDE on a real app
-			price: this.state.totalPrice,
-			customer: {
-				name: "Trevor Seibel",
-				address: {
-					street: "123 fake street",
-					postalCode: "K1Y 1A3",
-					country: "Canada"
-				},
-				email: "test@fake.ca"
-			},
-			deliveryMethod: "fastest"
-		};
-		axios
-			.post("/orders.json", order)
-			.then(response =>
-				this.setState({ loading: true, purchasing: false })
-			)
-			.catch(error =>
-				this.setState({ loading: false, purchasing: false })
-			);
 	};
 
 	render() {

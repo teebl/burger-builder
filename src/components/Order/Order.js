@@ -26,9 +26,7 @@ const order = props => {
 			</p>
 			<p>
 				Price:{" "}
-				<strong>
-					{Number.parseFloat(props.order.price).toFixed(2)}
-				</strong>
+				<strong>{Number.parseFloat(props.order.price).toFixed(2)}</strong>
 			</p>
 		</div>
 	);

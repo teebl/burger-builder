@@ -1,0 +1,2 @@
+export const ADD_INGREDIENT = "ADD_INGREDIENT";
+export const RMV_INGREDIENT = "RMV_INGREDIENT";

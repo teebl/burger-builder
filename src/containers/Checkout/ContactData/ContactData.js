@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "../../../axios-orders";
+import { connect } from "react-redux";
 
 import Spinner from "../../../components/UI/Spinner/Spinner";
 import classes from "./ContactData.css";
@@ -106,7 +107,7 @@ class ContactData extends Component {
 			].value;
 		}
 		const order = {
-			ingredients: this.props.ingredients,
+			ingredients: this.props.ings,
 			price: this.props.price,
 			orderData: formData
 		};
@@ -134,7 +135,7 @@ class ContactData extends Component {
 		if (rules.maxLength) {
 			isValid = value.length <= rules.maxLength && isValid;
 		}
-
+		console.log(isValid + " is valid");
 		return isValid;
 	}
 
@@ -157,10 +158,14 @@ class ContactData extends Component {
 		let formIsValid = true;
 		for (let inputIdentifier in updatedOrderForm) {
 			formIsValid =
-				updatedOrderForm[inputIdentifier].validation.valid && formIsValid;
+				updatedOrderForm[inputIdentifier].validation.valid &&
+				formIsValid;
 		}
 
-		this.setState({ orderForm: updatedOrderForm, formIsValid: formIsValid });
+		this.setState({
+			orderForm: updatedOrderForm,
+			formIsValid: formIsValid
+		});
 	};
 
 	render() {
@@ -183,7 +188,9 @@ class ContactData extends Component {
 						invalid={!formElement.config.validation.valid}
 						shouldValidate={formElement.config.validation.required}
 						touched={formElement.config.validation.touched}
-						changed={event => this.inputChangedHandler(event, formElement.id)}
+						changed={event =>
+							this.inputChangedHandler(event, formElement.id)
+						}
 					/>
 				))}
 				<Button btnType="Success" disabled={!this.state.formIsValid}>
@@ -204,5 +211,10 @@ class ContactData extends Component {
 		);
 	}
 }
-
-export default ContactData;
+const mapStateToProps = state => {
+	return {
+		ings: state.ingredients,
+		price: state.totalPrice
+	};
+};
+export default connect(mapStateToProps)(ContactData);

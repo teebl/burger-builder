@@ -33,7 +33,7 @@
   content: "";
 }
 .Loader:after {
-  background: #800080;
+  background: white;
   width: 75%;
   height: 75%;
   border-radius: 50%;

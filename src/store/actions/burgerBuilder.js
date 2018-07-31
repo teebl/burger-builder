@@ -29,7 +29,6 @@ export const fetchIngredientsFailed = () => {
 };
 
 export const initIngredients = () => {
-	console.log("initIngredients");
 	return dispatch => {
 		axios
 			.get("https://burger-builder-f056a.firebaseio.com/ingredients.json")

@@ -21,13 +21,14 @@ const order = props => {
 	});
 	return (
 		<div className={classes.Order}>
-			<p>
-				Ingredients: <ul>{ingredientOutput}</ul>
-			</p>
-			<p>
+			<h4>Ingredients</h4>
+			<ul>{ingredientOutput}</ul>
+			<h4>
 				Price:{" "}
-				<strong>{Number.parseFloat(props.order.price).toFixed(2)}</strong>
-			</p>
+				<strong>
+					{Number.parseFloat(props.order.price).toFixed(2)}
+				</strong>
+			</h4>
 		</div>
 	);
 };
